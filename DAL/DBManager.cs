@@ -30,5 +30,25 @@ namespace DAL
             return dt;
         }
 
+        public int ExecuteNonQuery(string cmdtext)
+        {
+            cmd.Parameters.Clear();
+            cmd.CommandText = cmdtext;
+            conn?.Open();
+            int x = cmd.ExecuteNonQuery();
+            conn?.Close();
+            return x;
+        }
+
+        public object ExecuteScalar(string cmdtext)
+        {
+            cmd.Parameters.Clear();
+            cmd.CommandText = cmdtext;
+            conn?.Open();
+            object x = cmd.ExecuteScalar();
+            conn?.Close();
+            return x;
+        }
+
     }
 }
