@@ -13,6 +13,11 @@ namespace project
     {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Product> products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Order_Product> Order_Products { get; set; }
+
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer("Data Source=DESKTOP-DV1U283\\SQLEXPRESS01;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
