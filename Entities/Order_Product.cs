@@ -9,7 +9,7 @@ namespace project
 {
     public class Order_Product
     {
-        
+        [ForeignKey("Order")]
         public int OrderID { get; set; }
         [ForeignKey("Product")]
         public int ProductID { get; set; }
@@ -17,5 +17,6 @@ namespace project
         public int Price { get; set; }
 
         public Product Product { get; set; }
+        public Order Order { get; set; }
     }
 }
