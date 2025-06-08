@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using project.Entities;
+//using project.Entities;
+using project;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,14 @@ namespace project
             optionsBuilder.UseSqlServer("Data Source=DESKTOP-DV1U283\\SQLEXPRESS01;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
             //base.OnConfiguring(optionsBuilder);
             //optionsBuilder.UseSqlServer("Data Source=DESKTOP-N3T3R6C\\SQLEXPRESS;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order_Product>(s =>
+            {
+                s.HasKey(c => new { c.ProductID,c.OrderID });
+            });
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
