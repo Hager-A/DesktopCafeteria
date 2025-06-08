@@ -8,16 +8,26 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class DBManager
+    public class DBManager
     {
         SqlConnection conn;
         SqlCommand cmd;
         DataTable dt;
+        SqlDataAdapter adapter;
         public DBManager() {
-            conn = new SqlConnection("Data Source=DESKTOP-DV1U283\\SQLEXPRESS01;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+            //conn = new SqlConnection("Data Source=DESKTOP-DV1U283\\SQLEXPRESS01;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
 
-            //conn = new SqlConnection("Data Source=DESKTOP-N3T3R6C\\SQLEXPRESS;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+            conn = new SqlConnection("Data Source=DESKTOP-N3T3R6C\\SQLEXPRESS;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
             cmd = new SqlCommand("", conn);
+        }
+        public DataTable GetDataTable(string cmdText)
+        {
+            cmd.Parameters.Clear();
+            cmd.CommandText = cmdText;
+            dt = new DataTable();
+            adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            return dt;
         }
 
     }
