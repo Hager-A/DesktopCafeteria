@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using project;
+using System.Text.RegularExpressions;
 
 namespace Demo
 {
@@ -6,8 +7,8 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-            string email;
-            string password;
+            string email="";
+            string password="";
             string patternEmail = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
             string patternPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$";
             bool check = true;
@@ -30,11 +31,13 @@ namespace Demo
                     
                 }
             }
+            
+            Employee em = EmployeeManager.GetEmployee(email,password);
+            Console.WriteLine(em);
 
+           
 
-
-
-            Console.WriteLine("Hello, World!");
+            
         }
     }
 }

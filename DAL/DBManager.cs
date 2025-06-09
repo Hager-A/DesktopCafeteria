@@ -15,9 +15,9 @@ namespace DAL
         DataTable dt;
         SqlDataAdapter adapter;
         public DBManager() {
-            //conn = new SqlConnection("Data Source=DESKTOP-DV1U283\\SQLEXPRESS01;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+            conn = new SqlConnection("Data Source=DESKTOP-DV1U283\\SQLEXPRESS01;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
 
-            conn = new SqlConnection("Data Source=DESKTOP-N3T3R6C\\SQLEXPRESS;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+            //conn = new SqlConnection("Data Source=DESKTOP-N3T3R6C\\SQLEXPRESS;Initial Catalog=DesktopCafeteria;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
             cmd = new SqlCommand("", conn);
         }
         public DataTable GetDataTable(string cmdText)

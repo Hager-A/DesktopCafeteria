@@ -11,10 +11,11 @@ namespace project
     public static class EmployeeManager
     {
         static DBManager db=new DBManager();
-        public static Employee GetEmployee()
+        public static Employee GetEmployee(string email,string pass)
         {
-            DataTable dt = db.GetDataTable("select *from Employees where Email='' and Name=''");
+            DataTable dt = db.GetDataTable($"select *from Employees where Email='{email}' and Password='{pass}'");
             Employee res = new Employee();
+
             foreach (DataRow dr in dt.Rows) {
                 res = ConvertFromDataRowToEmp(dr);
                 
